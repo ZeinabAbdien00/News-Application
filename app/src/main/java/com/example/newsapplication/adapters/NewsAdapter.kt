@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.newsapplication.R
 import com.example.newsapplication.databinding.ItemArticlePreviewBinding
 import com.example.newsapplication.models.Article
 
@@ -42,12 +43,29 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
         val article = differ.currentList[position]
         holder.binding.root.apply {
-            Glide.with(this).load(article.urlToImage).into(holder.binding.ivArticleImage)
+
+            if(article.urlToImage != null){
+                Glide.with(this).load(article.urlToImage).into(holder.binding.ivArticleImage)
+            }else{
+                holder.binding.ivArticleImage.setImageResource(R.drawable.img)
+            }
+
             holder.binding.apply {
-                tvSource.text = article.source?.name
-                tvTitle.text = article.title
-                tvDescription.text = article.description
-                tvPublishedAt.text = article.publishedAt
+                if(article.title != null){
+                    tvTitle.text = article.title
+                }else{
+                    tvTitle.text = "No-Title"
+                }
+
+                if(article.description != null){
+                    tvDescription.text = article.description
+                }else{
+                    tvDescription.text = "No-description"
+                }
+
+                tvSource.text = article.source.name
+                val splitter = article.publishedAt.split("T")
+                tvPublishedAt.text = splitter[0]
             }
             setOnClickListener {
                 onItemClickListener?.let { it(article) }

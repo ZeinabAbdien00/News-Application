@@ -3,8 +3,10 @@ package com.example.newsapplication.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
+import java.util.*
 
 
+@Suppress("NAME_SHADOWING")
 @Entity(
     tableName = "articles",
 )
@@ -14,16 +16,16 @@ data class Article(
     val author: String?,
     val content: String?,
     val description: String?,
-    val publishedAt: String?,
+    val publishedAt: String,
     val source: Source,
     val title: String?,
     val url: String?,
     val urlToImage: String?
-) : Serializable{
+) : Serializable {
 
     override fun hashCode(): Int {
         var result = id.hashCode()
-        if (url.isNullOrEmpty()){
+        if (url.isNullOrEmpty()) {
             result = 31 * result + url.hashCode()
         }
         return result
