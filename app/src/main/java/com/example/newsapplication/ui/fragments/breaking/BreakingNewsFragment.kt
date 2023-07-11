@@ -77,7 +77,7 @@ class BreakingNewsFragment : Fragment() {
                     hideProgressBar()
                     response.message?.let { _ ->
 
-                        Toast.makeText(activity, response.message , Toast.LENGTH_LONG).show()
+                        Toast.makeText(activity, response.message, Toast.LENGTH_LONG).show()
                     }
                 }
                 is Resource.Loading -> {

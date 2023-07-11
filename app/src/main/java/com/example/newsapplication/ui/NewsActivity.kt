@@ -19,7 +19,7 @@ class NewsActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var navController : NavController
+    private lateinit var navController: NavController
 
     private lateinit var repository: NewsRepository
     lateinit var viewModel: NewsViewModel
@@ -29,8 +29,6 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
 
 
         val navHostFragment =
@@ -65,10 +63,10 @@ class NewsActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavigationView, navHostFragment.navController)
     }
 
-    private fun setupActionBar(){
+    private fun setupActionBar() {
         //navController = findNavController(R.id.newsNavHostFragment)
         appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController , appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {

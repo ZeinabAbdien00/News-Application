@@ -115,12 +115,12 @@ class NewsViewModel(
         breakingNews.postValue(Resource.Loading())
         try {
             if (hasInternetConnection()) {
-                Log.d("suz" , "is internet")
+                Log.d("suz", "is internet")
 
                 val response = newsRepository.getBreakingNews(countryCode, breakingNewsPage)
                 breakingNews.postValue(handleBreakingNewsResponse(response))
             } else {
-                Log.d("suz" , "no internet")
+                Log.d("suz", "no internet")
                 breakingNews.postValue(Resource.Error("No Internet connection"))
 
             }
@@ -134,7 +134,7 @@ class NewsViewModel(
     }
 
     fun hasInternetConnection(): Boolean {
-        Log.d("suz" , "has internet")
+        Log.d("suz", "has internet")
 
         val connectivityManager = getApplication<NewsApplication>().getSystemService(
             Context.CONNECTIVITY_SERVICE

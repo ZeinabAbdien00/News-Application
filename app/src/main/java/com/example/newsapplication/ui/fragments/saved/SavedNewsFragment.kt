@@ -82,10 +82,10 @@ class SavedNewsFragment : Fragment() {
         }
 
         viewModel.getSavedNews().observe(viewLifecycleOwner, Observer { articles ->
-            if(viewModel.hasInternetConnection()){
+            if (viewModel.hasInternetConnection()) {
                 newsAdapter.differ.submitList(articles)
-            }else{
-                Toast.makeText(activity, "No Internet Connection" , Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(activity, "No Internet Connection", Toast.LENGTH_LONG).show()
             }
 
         })
